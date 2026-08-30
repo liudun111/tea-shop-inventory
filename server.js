@@ -16,7 +16,7 @@ const crypto = require('crypto');
 const { exec } = require('child_process');
 const migrateLib = require('./scripts/migrate-lib');
 
-const PORT = 8080;
+const PORT = Number(process.env.PORT) || 8080;
 const ROOT = __dirname;
 const DATA_FILE = path.join(ROOT, 'data.json');
 const DB_FILE = path.join(ROOT, 'data.sqlite');

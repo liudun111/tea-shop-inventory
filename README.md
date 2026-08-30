@@ -25,6 +25,36 @@
 | 统计报表 | 按今天 / 本周 / 本月 / 上月 / 自定义区间统计销售额、毛利、进货额，商品销售排行，可**导出 CSV** |
 | 设置 | **自定义店铺 Logo**（侧边栏顶部展示）、店铺名称、低库存阈值、允许负库存、**数据备份导出 / 导入恢复**（含图片与 Logo）、清空数据 |
 
+## 系统截图（演示数据）
+
+首页 · 经营概览
+
+![首页](docs/screenshots/01-home.png)
+
+商品管理（支持图片、分类、隐藏停售商品）
+
+![商品管理](docs/screenshots/02-products.png)
+
+进货入库（选中商品自动展示详情）
+
+![进货入库](docs/screenshots/03-purchase.png)
+
+销售开单（POS 快速开单）
+
+![销售开单](docs/screenshots/04-sale-pos.png)
+
+库存流水（当前库存 + 出入库流水）
+
+![库存流水](docs/screenshots/05-inventory.png)
+
+统计报表（销售额 / 毛利 / 商品排行）
+
+![统计报表](docs/screenshots/06-reports.png)
+
+设置（Logo、店铺信息、数据备份）
+
+![设置](docs/screenshots/07-settings.png)
+
 ## 数据安全提示
 
 - **主存储：SQLite 数据库（`data.sqlite`，WAL 模式）**。商品、库存、进货流水、销售流水、调整流水分表存储，流水表对时间/商品ID/单号建索引。
