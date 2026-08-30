@@ -1,0 +1,22 @@
+# ===== 本地业务数据（含隐私，绝不发布）=====
+# 主数据库（SQLite，含商品/流水/设置）
+data.sqlite
+data.sqlite-wal
+data.sqlite-shm
+data.sqlite-journal
+
+# 历史 JSON 存档 / 回退存储
+data.json
+data.json.tmp-*
+
+# 商品图片与 Logo（业务隐私）
+images/
+
+# 每日自动备份
+backups/
+
+# ===== 常规 =====
+node_modules/
+*.log
+.DS_Store
+Thumbs.db

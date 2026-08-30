@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>茶语轩 · 进销存管理</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8D%B5%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- ===== 侧边栏 ===== -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-logo" id="brandLogo">🍵</div>
+      <div class="brand-text">
+        <div class="brand-name" id="brandName">茶语轩</div>
+        <div class="brand-sub">进销存管理</div>
+      </div>
+    </div>
+    <nav class="nav">
+      <a class="nav-item active" data-route="dashboard">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span>首页</span>
+      </a>
+      <a class="nav-item" data-route="products">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16.5 9.4 7.55 4.24"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+        <span>商品管理</span>
+      </a>
+      <a class="nav-item" data-route="purchase">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span>进货入库</span>
+      </a>
+      <a class="nav-item" data-route="sales">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <span>销售开单</span>
+      </a>
+      <a class="nav-item" data-route="movements">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+        <span>库存流水</span>
+      </a>
+      <a class="nav-item" data-route="reports">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        <span>统计报表</span>
+      </a>
+    </nav>
+    <div class="sidebar-foot">
+      <a class="nav-item" data-route="settings">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        <span>设置</span>
+      </a>
+      <div class="sidebar-hint">数据保存在本机浏览器</div>
+    </div>
+  </aside>
+
+  <!-- ===== 主内容区 ===== -->
+  <main class="main">
+    <header class="topbar">
+      <div class="topbar-title">
+        <h1 id="viewTitle">首页</h1>
+        <p id="viewSub"></p>
+      </div>
+      <div class="topbar-actions" id="topbarActions"></div>
+    </header>
+
+    <div id="storageBanner" class="storage-banner hidden"></div>
+
+    <!-- 首页 -->
+    <section class="view active" id="view-dashboard">
+      <div class="stat-grid" id="statGrid"></div>
+      <div class="dash-cols">
+        <div class="panel">
+          <div class="panel-head">
+            <h3>⚠️ 低库存提醒</h3>
+            <button class="link-btn" data-goto="products&low=1">查看全部 →</button>
+          </div>
+          <div id="lowStockList"></div>
+        </div>
+        <div class="panel">
+          <div class="panel-head">
+            <h3>最近流水</h3>
+            <button class="link-btn" data-goto="movements">全部 →</button>
+          </div>
+          <div id="recentMovements"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 商品管理 -->
+    <section class="view" id="view-products">
+      <div class="toolbar">
+        <div class="search-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input id="productSearch" placeholder="搜索商品名称 / 规格" autocomplete="off">
+        </div>
+        <div class="chip-row" id="categoryChips"></div>
+        <div class="seg" id="showSeg">
+          <button class="seg-btn active" data-show="online">在线商品</button>
+          <button class="seg-btn" data-show="all">全部</button>
+          <button class="seg-btn" data-show="hidden">隐藏商品</button>
+        </div>
+        <label class="check"><input type="checkbox" id="lowStockOnly"><span>只看低库存</span></label>
+        <button class="btn btn-primary" id="btnAddProduct">＋ 新增商品</button>
+      </div>
+      <div class="product-grid" id="productGrid"></div>
+    </section>
+
+    <!-- 进货入库 -->
+    <section class="view" id="view-purchase">
+      <div class="panel">
+        <div class="panel-head"><h3>📥 记一笔进货</h3></div>
+        <form id="purchaseForm" class="form-grid" autocomplete="off">
+          <label><span>商品<span class="req">*</span></span>
+            <select id="purchaseProduct" class="select"></select>
+          </label>
+          <label><span>数量<span class="req">*</span></span>
+            <input type="number" id="purchaseQty" class="input" step="0.01" min="0" placeholder="0" required>
+          </label>
+          <label>进货单价（¥）
+            <input type="number" id="purchasePrice" class="input" step="0.01" min="0" placeholder="0.00">
+          </label>
+          <label>日期
+            <input type="date" id="purchaseDate" class="input">
+          </label>
+          <label>供应商
+            <input id="purchaseSupplier" class="input" placeholder="如：武夷山茶厂">
+          </label>
+          <label>备注
+            <input id="purchaseNote" class="input" placeholder="可选">
+          </label>
+          <div class="form-actions">
+            <button class="btn btn-primary" type="submit" name="save">保存进货</button>
+            <button class="btn btn-ghost" type="submit" name="saveMore">保存并继续录入</button>
+          </div>
+        </form>
+        <div class="product-info" id="purchaseInfo"></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>进货记录</h3><span class="panel-sub" id="purchaseSummary"></span></div>
+        <div class="table-wrap"><table id="purchaseTable"></table></div>
+      </div>
+    </section>
+
+    <!-- 销售开单 -->
+    <section class="view" id="view-sales">
+      <div class="panel cta-panel">
+        <div class="cta-text">
+          <h3>快速开销售单</h3>
+          <p>支持多商品、自定义售价、自动扣减库存，开单后还可打印小票。</p>
+        </div>
+        <button class="btn btn-primary btn-lg" id="btnNewSale">＋ 新建销售单</button>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>销售记录</h3><span class="panel-sub" id="saleSummary"></span></div>
+        <div class="table-wrap"><table id="saleTable"></table></div>
+      </div>
+    </section>
+
+    <!-- 库存流水 -->
+    <section class="view" id="view-movements">
+      <div class="panel">
+        <div class="panel-head"><h3>📦 当前库存</h3><button class="btn btn-ghost btn-sm" id="btnAdjust">库存调整</button></div>
+        <div class="table-wrap"><table id="stockTable"></table></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>出入库流水</h3></div>
+        <div class="toolbar toolbar-light" id="movementFilters">
+          <select id="mfType" class="select">
+            <option value="">全部类型</option>
+            <option value="in">进货</option>
+            <option value="out">销售</option>
+            <option value="adjust">调整</option>
+          </select>
+          <input type="date" id="mfFrom" class="input">
+          <span class="muted">至</span>
+          <input type="date" id="mfTo" class="input">
+          <div class="search-box grow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input id="mfSearch" placeholder="搜索商品 / 客户 / 供应商" autocomplete="off">
+          </div>
+        </div>
+        <div class="table-wrap"><table id="movementTable"></table></div>
+      </div>
+    </section>
+
+    <!-- 统计报表 -->
+    <section class="view" id="view-reports">
+      <div class="toolbar">
+        <div class="seg" id="periodSeg">
+          <button class="seg-btn" data-p="today">今天</button>
+          <button class="seg-btn" data-p="week">本周</button>
+          <button class="seg-btn active" data-p="month">本月</button>
+          <button class="seg-btn" data-p="lastMonth">上月</button>
+          <button class="seg-btn" data-p="custom">自定义</button>
+        </div>
+        <input type="date" id="rpFrom" class="input" disabled>
+        <span class="muted">至</span>
+        <input type="date" id="rpTo" class="input" disabled>
+        <button class="btn btn-ghost" id="btnExportCsv">导出 CSV</button>
+      </div>
+      <div class="stat-grid stat-grid-4" id="reportStats"></div>
+      <div class="panel">
+        <div class="panel-head"><h3>商品销售统计</h3><span class="panel-sub" id="reportSub"></span></div>
+        <div class="table-wrap"><table id="reportTable"></table></div>
+      </div>
+    </section>
+
+    <!-- 设置 -->
+    <section class="view" id="view-settings">
+      <div class="panel">
+        <div class="panel-head"><h3>店铺 Logo</h3></div>
+        <div class="logo-uploader">
+          <div class="logo-preview" id="logoPreview">🍵</div>
+          <div class="img-actions">
+            <label class="btn btn-ghost btn-sm">📷 上传 Logo<input type="file" id="logoInput" accept="image/*" hidden></label>
+            <button class="btn btn-ghost btn-sm" id="logoRemove">恢复默认</button>
+            <span class="hint">显示在左侧菜单顶部，建议方形图片，自动压缩到 400px 以内</span>
+          </div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>基础设置</h3></div>
+        <form id="settingsForm" class="form-grid" autocomplete="off">
+          <label>店铺名称
+            <input id="setShopName" class="input" placeholder="茶语轩">
+          </label>
+          <label>低库存预警阈值
+            <input type="number" id="setLowStock" class="input" min="0" step="1" placeholder="10">
+          </label>
+          <label class="check span2"><input type="checkbox" id="setAllowNegative"><span>允许负库存（先卖后进货的场景）</span></label>
+          <div class="form-actions"><button class="btn btn-primary" type="submit">保存设置</button></div>
+        </form>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>数据存储</h3></div>
+        <p class="storage-status" id="storageStatus"></p>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>数据备份</h3></div>
+        <p class="muted">数据保存在本机磁盘的 <code>data.json</code> 文件中（软件目录下），每次操作自动保存。导出 / 导入功能可用于手动备份或转移到其它电脑。</p>
+        <div class="row gap">
+          <button class="btn btn-ghost" id="btnExportData">导出数据（JSON 备份）</button>
+          <label class="btn btn-ghost">导入备份<input type="file" id="importFile" accept=".json,application/json" hidden></label>
+        </div>
+      </div>
+      <div class="panel panel-danger">
+        <div class="panel-head"><h3>危险操作</h3></div>
+        <p class="muted">清空后所有商品、流水、设置将被删除，且无法恢复。</p>
+        <button class="btn btn-danger" id="btnClearData">清空所有数据</button>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>关于</h3></div>
+        <p class="muted">茶店进销存 v2.0 · 本地运行，数据保存在本机磁盘 <code>data.json</code>。<br>
+        支持：商品图片 · 自动产品ID · 进货入库 · 销售开单 · 库存调整 · 统计报表 · 小票打印 · 磁盘自动保存。</p>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div id="toastHost"></div>
+<div id="modalHost"></div>
+<div class="print-area" id="printArea"></div>
+
+<script src="js/db.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
